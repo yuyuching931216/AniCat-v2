@@ -53,7 +53,11 @@ def Anime_Episode(url):
 
     #3 APIv2
     r = requests.post('https://v.anime1.me/api',headers = headers,data = xsend)
-    url = 'https:{}'.format(json.loads(r.text)['s']['src'])
+    print("API 回傳內容：", r.text)
+    data_json = json.loads(r.text)
+    if isinstance(data_json, list):
+        data_json = data_json[0]
+    url = 'https:{}'.format(data_json['s'][0]['src'])
     
     set_cookie = r.headers['set-cookie']
     cookie_e = re.search(r"e=(.*?);", set_cookie, re.M|re.I).group(1)
@@ -82,7 +86,7 @@ def MP4_DL(Download_URL, Video_Name, Cookies):
     if(r.status_code == 200):
         print('+ \033[1;34m{}\033[0m [{size:.2f} MB]'.format(Video_Name, size = content_length / 1024 / 1024))
         # Progress Bar
-        with alive_bar(round(content_length / chunk_size), spinner = 'ball_scrolling', bar = 'blocks' ) as bar:
+        with alive_bar(round(content_length / chunk_size), spinner = 'classic', bar = 'blocks' ) as bar:
             with open(os.path.join(download_path,  '{}.mp4'.format(Video_Name)), 'wb') as f:
                 for data in r.iter_content(chunk_size = chunk_size):
                     f.write(data)

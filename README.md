@@ -1,6 +1,7 @@
 # AniCat-v2
 
 AniCat-v2 為一個 [Anime1.me](https://anime1.me/) 的下載器。
+修復了原版的Bug
 
 ## 功能
 - 支援多連結輸入
@@ -40,7 +41,3 @@ AniCat-v2 為一個 [Anime1.me](https://anime1.me/) 的下載器。
             ? Anime1 URL：https://anime1.me/15651,https://anime1.me/15603
             ? Anime1 URL：https://anime1.me/15651,https://anime1.me/category/2021年冬季/關於我轉生變成史萊姆這檔事-第二季
             ```
-
-## TODO
-- [ ] 平行化下載
-- [ ] GUI 介面
